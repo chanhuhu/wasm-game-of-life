@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>wasm game of life</title>
+    <style>
+      .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #fps {
+        white-space: pre;
+        font-family: monospace;
+      }
+
+      #canvas {
+        background-color: #fefefe;
+        border: none;
+        border-width: 0;
+        border-radius: 6px;
+        box-shadow: 0 0 0.3rem 0.001rem #999;
+        margin: 1rem;
+        padding: 40px 40px 40px 40px;
+      }
+
+      .play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      .action-groups {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+    <div class="container">
+      <h1>Game of life</h1>
+      <div id="fps"></div>
+      <canvas id="canvas"></canvas>
+      <label for="canvas-height">Set canvas height</label>
+      <input id="canvas-height" type="text" placeholder="" value="64" />
+      <label for="canvas-width">Set canvas width</label>
+      <input id="canvas-width" type="text" placeholder="" value="64" />
+      <div class="action-groups">
+        <button id="play-pause" class="play-btn"></button>
+        <button id="create-new-canvas">Create canvas</button>
+        <button id="random-mutate">Random mutate</button>
+      </div>
+      </div>
+    <script src="./bootstrap.js"></script>
+  </body>
+</html>
