@@ -1,3 +1,9 @@
+# wasm-game-of-life
+
+This was my first time to learn about rust wasm.
+
+![thumbnail](thumbnail.png)
+
 <div align="center">
 
   <h1><code>wasm-pack-template</code></h1>
