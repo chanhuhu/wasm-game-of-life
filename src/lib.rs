@@ -1,5 +1,3 @@
-mod utils;
-
 use js_sys::Math;
 use std::fmt;
 use wasm_bindgen::prelude::*;

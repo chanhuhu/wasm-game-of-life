@@ -21,7 +21,7 @@ pub fn input_spaceship() -> Universe {
 
 #[cfg(test)]
 pub fn expected_spaceship() -> Universe {
-    let mut universe = Universe::new("canvas".to_string(), 0, 0);
+    let mut universe = Universe::new("canvas2".to_string(), 0, 0);
     universe.set_width(6);
     universe.set_height(6);
     universe.set_cells(&[(2, 1), (2, 3), (3, 2), (3, 3), (4, 2)]);
@@ -35,9 +35,11 @@ pub fn test_tick() {
     let document = window.document().expect("should have a document on window");
     let body = document.body().expect("document should have a body");
     let new_canvas = document.create_element("canvas").unwrap();
-
+    let new_canvas2 = document.create_element("canvas").unwrap();
     new_canvas.set_attribute("id", "canvas").unwrap();
+    new_canvas2.set_attribute("id", "canvas2").unwrap();
     body.append_child(&new_canvas).unwrap();
+    body.append_child(&new_canvas2).unwrap();
 
     // Let's create a smaller Universe with a small spaceship to test!
     let mut input_universe = input_spaceship();
