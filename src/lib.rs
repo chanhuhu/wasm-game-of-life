@@ -18,7 +18,7 @@ const ALIVE_COLOR: &str = "#000000";
 
 #[wasm_bindgen]
 pub struct Universe {
-    canvas_id: String,
+    canvas: web_sys::HtmlCanvasElement,
     context: web_sys::CanvasRenderingContext2d,
     height: u32,
     width: u32,
@@ -49,7 +49,7 @@ impl Universe {
             .unwrap();
 
         Self {
-            canvas_id,
+            canvas,
             context,
             height,
             width,
@@ -202,14 +202,8 @@ impl Universe {
     ///
     /// Resets all cells to the dead state.
     pub fn set_width(&mut self, width: u32) {
-        let document = web_sys::window().unwrap().document().unwrap();
-        let canvas = document.get_element_by_id(&self.canvas_id).unwrap();
-        let canvas: web_sys::HtmlCanvasElement = canvas
-            .dyn_into::<web_sys::HtmlCanvasElement>()
-            .map_err(|_| ())
-            .unwrap();
         let canvas_width = (CELL_SIZE + 1) * width + 1;
-        canvas.set_width(canvas_width);
+        self.canvas.set_width(canvas_width);
         self.width = width;
         self.cells = (0..width * self.height).map(|_| Cell::Dead).collect();
     }
@@ -222,14 +216,8 @@ impl Universe {
     ///
     /// Resets all cells to the dead state.
     pub fn set_height(&mut self, height: u32) {
-        let document = web_sys::window().unwrap().document().unwrap();
-        let canvas = document.get_element_by_id(&self.canvas_id).unwrap();
-        let canvas: web_sys::HtmlCanvasElement = canvas
-            .dyn_into::<web_sys::HtmlCanvasElement>()
-            .map_err(|_| ())
-            .unwrap();
         let canvas_height = (CELL_SIZE + 1) * height + 1;
-        canvas.set_height(canvas_height);
+        self.canvas.set_height(canvas_height);
         self.height = height;
         self.cells = (0..height * self.width).map(|_| Cell::Dead).collect();
     }
